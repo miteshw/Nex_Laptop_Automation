@@ -38,7 +38,12 @@ public class PlaceOrderTest extends BaseTest {
         loginPage.clickContinue();
         
         // Add a tiny sleep to allow the OTP field to render after Continue is clicked
-        try { Thread.sleep(500); } catch (Exception e) {}
+        try { Thread.sleep(500);
+
+        }
+        catch (Exception e) {
+
+        }
         
         loginPage.enterOTP();
         loginPage.clickSubmit();

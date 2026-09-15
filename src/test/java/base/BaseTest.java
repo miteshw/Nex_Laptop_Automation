@@ -23,8 +23,7 @@ public class BaseTest {
 
         driver.manage().window().maximize();
 
-        driver.manage().timeouts()
-                .pageLoadTimeout(Duration.ofSeconds(60));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
 
         wait = new WebDriverWait(
                 driver,
@@ -41,7 +40,7 @@ public class BaseTest {
     public void tearDown() {
 
         if (driver != null) {
-           // driver.quit();
+            //driver.quit();
         }
     }
 }
