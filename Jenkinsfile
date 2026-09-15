@@ -4,7 +4,7 @@ pipeline {
     // Ensure you have configured Maven and JDK in Jenkins (Manage Jenkins -> Global Tool Configuration)
     // The names here ('Maven 3' and 'JDK') must match the names you defined in Jenkins.
     tools {
-        maven 'Maven 3'
+        maven 'MVN'
         jdk 'JDK' 
     }
 
