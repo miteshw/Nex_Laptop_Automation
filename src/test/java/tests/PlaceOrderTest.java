@@ -26,6 +26,13 @@ public class PlaceOrderTest extends BaseTest {
         // =====================================================================
         // STEP 0: Log in first to achieve the authenticated state shown in SS
         // =====================================================================
+        System.out.println("Sleeping for 65 seconds to bypass UAT backend OTP rate limit (anti-spam)...");
+        try {
+            Thread.sleep(65000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
         System.out.println("Step 0: Logging in to get to the authenticated state...");
         homePage.clickSignup();
 

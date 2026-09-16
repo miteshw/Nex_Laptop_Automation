@@ -5,7 +5,7 @@ pipeline {
     // The names here ('Maven 3' and 'JDK') must match the names you defined in Jenkins.
     tools {
         maven 'MVN'
-        jdk 'JDk' 
+        jdk 'JDk'
     }
 
     stages {
