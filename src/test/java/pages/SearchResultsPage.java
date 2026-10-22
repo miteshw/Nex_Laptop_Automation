@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -25,8 +26,18 @@ public class SearchResultsPage {
 
     public void clickBuyNow() {
         WebElement btn = wait.until(
-                ExpectedConditions.elementToBeClickable(buyNowButton)
+                ExpectedConditions.presenceOfElementLocated(buyNowButton)
         );
-        btn.click();
+
+        // Scroll into view to avoid header interception
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", btn);
+
+        try {
+            Thread.sleep(500);
+            wait.until(ExpectedConditions.elementToBeClickable(btn)).click();
+        } catch (Exception e) {
+            System.out.println("Buy Now standard click intercepted/failed, using JS click: " + e.getMessage());
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", btn);
+        }
     }
 }

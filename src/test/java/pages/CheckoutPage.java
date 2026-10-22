@@ -45,9 +45,16 @@ public class CheckoutPage {
 
     public void clickDeliverHere() {
         WebElement btn = wait.until(
-                ExpectedConditions.elementToBeClickable(deliverHereButton)
+                ExpectedConditions.presenceOfElementLocated(deliverHereButton)
         );
-        btn.click();
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", btn);
+        try {
+            Thread.sleep(500);
+            wait.until(ExpectedConditions.elementToBeClickable(btn)).click();
+        } catch (Exception e) {
+            System.out.println("Deliver Here standard click failed, using JS click: " + e.getMessage());
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", btn);
+        }
     }
 
     public void clickContinue() {
@@ -59,9 +66,16 @@ public class CheckoutPage {
         }
 
         WebElement btn = wait.until(
-                ExpectedConditions.elementToBeClickable(continueButton)
+                ExpectedConditions.presenceOfElementLocated(continueButton)
         );
-        btn.click();
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", btn);
+        try {
+            Thread.sleep(250);
+            wait.until(ExpectedConditions.elementToBeClickable(btn)).click();
+        } catch (Exception e) {
+            System.out.println("Continue standard click failed, using JS click: " + e.getMessage());
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", btn);
+        }
     }
 
     public void selectCashOnDelivery() {

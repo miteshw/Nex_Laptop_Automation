@@ -18,8 +18,10 @@ public class BaseTest {
 
     @BeforeMethod
     public void setUp() {
-
-        driver = new ChromeDriver();
+        org.openqa.selenium.chrome.ChromeOptions options = new org.openqa.selenium.chrome.ChromeOptions();
+        options.addArguments("--window-size=1920,1080");
+        options.addArguments("--remote-allow-origins=*");
+        driver = new ChromeDriver(options);
 
         driver.manage().window().maximize();
 

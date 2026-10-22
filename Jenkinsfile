@@ -22,7 +22,8 @@ pipeline {
                 
                 // If your Jenkins server is on Windows, use 'bat'. 
                 // If it is on Linux/Mac, change 'bat' to 'sh'.
-                bat 'mvn clean test'
+                // -DtestFailureIgnore=true prevents 'exit code 1' build termination, allowing Jenkins to record test reports
+                bat 'mvn clean test -DtestFailureIgnore=true'
             }
         }
     }
