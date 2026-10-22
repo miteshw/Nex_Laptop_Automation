@@ -14,9 +14,9 @@ public class SearchResultsPage {
     private WebDriver driver;
     private WebDriverWait wait;
 
-    // Locator for the "Buy Now" button on the search results page
+    // Locator for the "Buy Now" button on the search results page (only enabled buttons)
     private By buyNowButton = By.xpath(
-            "//button[contains(normalize-space(),'Buy Now')] | //*[text()='Buy Now']"
+            "//button[(contains(normalize-space(),'Buy Now') or text()='Buy Now') and not(@disabled)]"
     );
 
     public SearchResultsPage(WebDriver driver) {
